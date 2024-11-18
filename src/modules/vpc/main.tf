@@ -130,9 +130,9 @@ resource "aws_db_subnet_group" "csntp_subnet_group" {
 }
 
 
-output "vpc_id" {
-  value = aws_vpc.csntp.id
-}
+# output "vpc_id" {
+#   value = aws_vpc.csntp.id
+# }
 
 
 
