@@ -7,6 +7,5 @@ variable "alb_dns_name" {
 }
 
 variable "hosted_zone_id" {
-  default = "Z0409119JJPH7TF04AWF"
-  type    = string
+    type    = string
 }
