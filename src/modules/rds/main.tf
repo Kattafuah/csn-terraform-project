@@ -66,6 +66,3 @@ resource "aws_ssm_parameter" "database_username" {
   value = var.database_username
 }
 
-output "rds_endpoint" {
-  value = aws_db_instance.wordpress_db.endpoint
-}
