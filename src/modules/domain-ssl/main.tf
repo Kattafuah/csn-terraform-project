@@ -11,3 +11,6 @@ resource "aws_route53_record" "csntp_dns" {
   }
 }
 
+resource "aws_lb" "csntp_elb" {
+  # Ensure this resource is declared
+}

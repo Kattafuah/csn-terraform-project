@@ -13,3 +13,7 @@ output "rds_endpoint" {
 output "rds_instance_id" {
   value = aws_db_instance.wordpress_db.id
 }
+
+output "ssm_db_host_param" {
+  value = aws_ssm_parameter.db_host.value  # Adjust this to your actual resource
+}
