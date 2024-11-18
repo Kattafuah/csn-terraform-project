@@ -12,7 +12,6 @@ module "rds" {
   # subnets              = module.vpc.pri_subnets
   # rds_security_group_id = module.security.rds_security_group_id
   database_username          = module.rds.aws_ssm_parameter.database_username
-  db_password = module.aws_ssm_parameter.database_password
   # database_password          = module.rds.aws_ssm_parameter.database_password
 }
 
@@ -35,7 +34,6 @@ module "ecs-fargate" {
   ssm_db_host_param           = module.rds.ssm_db_host_param
   ssm_db_user_param           = module.rds.ssm_db_user_param
   secrets_manager_db_password = module.rds.aws_ssm_parameter.database_password
-  db_password = module.aws_ssm_parameter.database_password
 }
 
 module "domain-ssl" {
