@@ -44,3 +44,8 @@ module "domain-ssl" {
   # name     = var.domain_name
 }
 
+
+resource "aws_something_else" "example_usage" {
+  vpc_id      = module.vpc.vpc_id  # Correct use of a module output in main.tf
+  db_password = module.aws_ssm_parameter.database_password # Correct use of a module output in main.tf
+}
