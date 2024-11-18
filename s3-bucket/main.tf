@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "csn-terraform-state"
+  bucket = "csn-tf-state"
 }
 
 output "s3_bucket_name" {
