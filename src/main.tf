@@ -12,7 +12,8 @@ module "rds" {
   # subnets              = module.vpc.pri_subnets
   # rds_security_group_id = module.security.rds_security_group_id
   database_username          = module.rds.aws_ssm_parameter.database_username
-  # database_password          = module.rds.aws_ssm_parameter.database_password
+  # db_password          = module.rds.aws_ssm_parameter.database_password.value
+  # vpc_id               = module.vpc.vpc_id
 }
 
 
