@@ -34,7 +34,6 @@ module "ecs-fargate" {
   execution_role_arn          = var.execution_role_arn
   ssm_db_host_param           = module.rds.ssm_db_host_param
   ssm_db_user_param           = module.rds.ssm_db_user_param
-  rds_instance_id             = module.rds.rds_instance_id
   secrets_manager_db_password = module.rds.aws_ssm_parameter.database_password
 }
 
