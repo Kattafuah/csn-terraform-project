@@ -11,8 +11,8 @@ module "rds" {
   source               = "./modules/rds"
   # subnets              = module.vpc.pri_subnets
   # rds_security_group_id = module.security.rds_security_group_id
-  # db_username          = var.db_username
-  # db_password          = var.db_password
+  database_username          = module.rds.aws_ssm_parameter.database_username
+  # database_password          = module.rds.aws_ssm_parameter.database_password
 }
 
 
@@ -38,7 +38,8 @@ module "ecs-fargate" {
 
 module "domain-ssl" {
   source          = "./modules/domain-ssl"
-  route53_zone_id = var.route53_zone_id
+  route53_zone_id = "Z0409119JJPH7TF04AWF"
+  hosted_zone_id = "Z0409119JJPH7TF04AWF"
   alb_dns_name    = module.load-balancer.alb_dns_name
   # name     = var.domain_name
 }

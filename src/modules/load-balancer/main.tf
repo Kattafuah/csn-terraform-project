@@ -50,4 +50,6 @@ resource "aws_lb_listener" "csntp_listener_SSL" {
   }
 }
 
-
+output "alb_dns_name" {
+  value = aws_lb.alb.dns_name
+}

@@ -114,20 +114,3 @@ resource "aws_security_group" "elb_security_group" {
   }
 }
 
-resource "random_password" "password" {
-  length           = 12
-  special          = true
-  override_special = "!#$%&*()-_=+[]{}<>:?"
-}
-
-resource "aws_ssm_parameter" "database_password" {
-  name = "${local.ssm_path_database}"
-  type = "SecureString"
-  value = random_password.password.result
-}
-
-resource "aws_ssm_parameter" "database_username" {
-  name = "${local.ssm_path_database}/username"
-  type = "String"
-  value = var.database_username
-}
