@@ -2,7 +2,7 @@ output "database_username" {
   value = aws_ssm_parameter.database_username.value  # Ensure this resource is declared in the module
 }
 
-output "db_password" {
+output "database_password" {
   value = aws_ssm_parameter.database_password.value  # Ensure this resource is declared in the module
 }
 
