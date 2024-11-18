@@ -1,4 +1,4 @@
-name: Deploy Infrastructure
+name: Backend S3 Infrastructure
 
 on:
     workflow_dispatch:
