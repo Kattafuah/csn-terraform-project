@@ -21,16 +21,10 @@ variable "iam_database_authentication_enabled" {
   default = false
 }
 
-variable "rds_db_name" {
-  type    = string
-  default = "csntp_db"
-}
-
 variable "aws_efs_access_point" {
   type    = string
   default = "csntp_efs_access_point"
 }
-
 
 variable "pub_access" {
   type    = bool
