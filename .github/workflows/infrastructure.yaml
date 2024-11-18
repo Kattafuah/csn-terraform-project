@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   deploy_infra:
-    name: Deploy S3 Infrastructure
+    name: Deploy AWS Infrastructure
     runs-on: ubuntu-latest
     defaults:
       run:
