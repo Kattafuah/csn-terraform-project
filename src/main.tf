@@ -7,6 +7,22 @@ module "security" {
   vpc_id = module.vpc.vpc_id
 }
 
+module "load-balancer" {
+  source               = "./modules/load-balancer"
+  # subnets              = module.vpc.public_subnets
+  # lb_security_group_id = module.security.lb_security_group_id
+  # vpc_id               = var.vpc_id
+  # certificate_arn      = module.domain-ssl.certificate_arn
+}
+
+module "domain-ssl" {
+  source          = "./modules/domain-ssl"
+  route53_zone_id = "Z0409119JJPH7TF04AWF"
+  hosted_zone_id = "Z0409119JJPH7TF04AWF"
+  alb_dns_name    = module.load-balancer.alb_dns_name
+  # name     = var.domain_name
+}
+
 module "rds" {
   source               = "./modules/rds"
   # subnets              = module.vpc.pri_subnets
@@ -14,15 +30,6 @@ module "rds" {
   # database_username          = module.rds.aws_ssm_parameter.database_username
   # db_password          = module.rds.aws_ssm_parameter.database_password.value
   # vpc_id               = module.vpc.vpc_id
-}
-
-
-module "load-balancer" {
-  source               = "./modules/load-balancer"
-  # subnets              = module.vpc.public_subnets
-  # lb_security_group_id = module.security.lb_security_group_id
-  # vpc_id               = var.vpc_id
-  # certificate_arn      = module.domain-ssl.certificate_arn
 }
 
 
@@ -37,13 +44,6 @@ module "ecs-fargate" {
   secrets_manager_db_password = module.rds.database_password
 }
 
-module "domain-ssl" {
-  source          = "./modules/domain-ssl"
-  route53_zone_id = "Z0409119JJPH7TF04AWF"
-  hosted_zone_id = "Z0409119JJPH7TF04AWF"
-  alb_dns_name    = module.load-balancer.alb_dns_name
-  # name     = var.domain_name
-}
 
 
 # resource "aws_something_else" "example_usage" {
