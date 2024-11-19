@@ -4,7 +4,7 @@ resource "aws_lb_target_group" "csntp_target_group" {
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
-  vpc_id      = aws_vpc.csntp.id
+  vpc_id      = aws_vpc.vpc_id
 
   health_check {
     path     = "/wp-admin/install.php"
@@ -50,6 +50,3 @@ resource "aws_lb_listener" "csntp_listener_SSL" {
   }
 }
 
-output "alb_dns_name" {
-  value = aws_lb.alb.dns_name
-}

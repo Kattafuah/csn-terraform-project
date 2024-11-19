@@ -5,12 +5,9 @@ resource "aws_route53_record" "csntp_dns" {
   type    = "A"
 
   alias {
-    name                   = aws_lb.csntp_elb.dns_name
-    zone_id                = aws_lb.csntp_elb.zone_id
+    name                   = module.load_balancer.dns_name
+    zone_id                = module.load_balancer.zone_id
     evaluate_target_health = true
   }
 }
 
-resource "aws_lb" "csntp_elb" {
-  # Ensure this resource is declared
-}

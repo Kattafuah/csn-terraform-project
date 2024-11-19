@@ -10,7 +10,7 @@ variable "cluster_name" {
 }
 
 variable "execution_role_arn" {
-  description = "The ARN of the IAM role that ECS tasks will use (obfuscated)."
+  description = "The ARN of the IAM role that ECS tasks will use."
   type        = string
 }
 

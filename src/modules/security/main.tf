@@ -1,7 +1,7 @@
 resource "aws_security_group" "rds_security_group" {
   name        = "rds_security_group"
   description = "security group for rds"
-  vpc_id      = aws_vpc.csntp.id
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port       = var.web_ports[0]
@@ -15,7 +15,7 @@ resource "aws_security_group" "rds_security_group" {
 resource "aws_security_group" "ecs_security_group" {
   name        = "ecs_security_group"
   description = "security group for ecs"
-  vpc_id      = aws_vpc.csntp.id
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port       = var.web_ports[2]
@@ -82,7 +82,7 @@ resource "aws_security_group" "ecs_security_group" {
 resource "aws_security_group" "efs_security_group" {
   name        = "efs_sg"
   description = "route traffic to ecs security group"
-  vpc_id      = aws_vpc.csntp.id
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = var.web_ports[1]
@@ -96,7 +96,7 @@ resource "aws_security_group" "efs_security_group" {
 resource "aws_security_group" "elb_security_group" {
   name        = "elb_sg"
   description = "route traffic to ecs"
-  vpc_id      = aws_vpc.csntp.id
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 0

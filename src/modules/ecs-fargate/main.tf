@@ -104,19 +104,19 @@ resource "aws_ecs_task_definition" "csntp_task_definition" {
       environment = [
         {
           name  = "WORDPRESS_DB_HOST",
-          value = aws_db_instance.csntp_rds.endpoint
+          value = module.rds.aws_db_instance.csntp_rds.endpoint
         },
         {
           name  = "WORDPRESS_DB_USER",
-          value = aws_ssm_parameter.database_username.value
+          value = module.rds.aws_ssm_parameter.database_username.value
         },
         {
           name  = "WORDPRESS_DB_PASSWORD",
-          value = aws_ssm_parameter.database_password.value
+          value = module.rds.aws_ssm_parameter.database_password.value
         },
         {
           name  = "WORDPRESS_DB_NAME",
-          value = var.rds_db_name
+          value = module.rds_db_name
         }
       ]
     }
