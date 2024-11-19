@@ -4,7 +4,7 @@ resource "aws_lb_target_group" "csntp_target_group" {
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
-  vpc_id      = aws_vpc.vpc_id
+  vpc_id      = module.vpc.aws_vpc.vpc_id
 
   health_check {
     path     = "/wp-admin/install.php"
@@ -17,8 +17,8 @@ resource "aws_lb" "csntp_elb" {
   name               = var.elb_name
   internal           = false
   load_balancer_type = var.elb_type
-  security_groups    = [aws_security_group.elb_security_group.id]
-  subnets            = [aws_subnet.pub_sn1.id, aws_subnet.pub_sn2.id]
+  security_groups    = [module.security.aws_security_group.elb_security_group.id]
+  subnets            = [module.vpc.aws_subnet.pub_sn1.id, aws_subnet.pub_sn2.id]
 
   enable_deletion_protection = false
 
