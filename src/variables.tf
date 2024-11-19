@@ -58,3 +58,11 @@ variable "pub_access" {
   type    = bool
   default = false
 }
+
+variable "hosted_zone_id" {
+    type    = string
+}
+
+variable "alb_dns_name" {
+  type = string
+}

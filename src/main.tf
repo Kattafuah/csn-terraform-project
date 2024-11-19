@@ -1,8 +1,8 @@
 module "vpc" {
   source = "./modules/vpc"
-  route53_zone_id = module.vpc
-  hosted_zone_id = module.vpc
-  alb_dns_name    = module.vpc # module.var.alb_dns_name
+  route53_zone_id = var.route53_zone_id
+  hosted_zone_id = var.hosted_zone_id
+  alb_dns_name    = var.alb_dns_name # module.var.alb_dns_name
 }
 
 module "security" {
