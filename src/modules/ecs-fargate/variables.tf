@@ -68,3 +68,8 @@ variable "iam_database_authentication_enabled" {
   description = "Enable IAM database authentication"
   type        = bool
 }
+
+variable "database_username" {
+  type    = string
+  default = "admin"
+}

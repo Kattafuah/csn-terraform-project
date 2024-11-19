@@ -34,7 +34,6 @@ resource "aws_subnet" "pri_sn1" {
   }
 }
 
-
 resource "aws_subnet" "pri_sn2" {
   vpc_id            = aws_vpc.csntp.id
   cidr_block        = var.subnet2_cidr
@@ -44,14 +43,12 @@ resource "aws_subnet" "pri_sn2" {
   }
 }
 
-
 resource "aws_route_table" "pri-route-table" {
   vpc_id = aws_vpc.csntp.id
   tags = {
     Name = "wp-pri-route-table"
   }
 }
-
 
 resource "aws_route_table" "pub-route-table" {
   vpc_id = aws_vpc.csntp.id
@@ -119,7 +116,6 @@ resource "aws_route" "pri-route-table-route-for-nat-gw" {
 }*/
 
 
-
 resource "aws_db_subnet_group" "csntp_subnet_group" {
   name       = "csntp_subnet_group"
   subnet_ids = [aws_subnet.pri_sn1.id, aws_subnet.pri_sn2.id]
@@ -130,10 +126,68 @@ resource "aws_db_subnet_group" "csntp_subnet_group" {
 }
 
 
-# output "vpc_id" {
-#   value = aws_vpc.csntp.id
-# }
+resource "aws_lb_target_group" "csntp_target_group" {
+  name        = var.target_group_name
+  port        = 80
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = aws_vpc.csntp.id
+
+  health_check {
+    path     = "/wp-admin/install.php"
+    protocol = "HTTP"
+  }
+}
 
 
+resource "aws_lb" "csntp_elb" {
+  name               = var.elb_name
+  internal           = false
+  load_balancer_type = var.elb_type
+  security_groups    = [module.security.aws_security_group.elb_security_group.id]
+  subnets            = [aws_subnet.pub_sn1.id, aws_subnet.pub_sn2.id]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Environment = "dev"
+  }
+}
+
+resource "aws_lb_listener" "csntp_listener" {
+  load_balancer_arn = aws_lb.csntp_elb.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = var.listener_forward_type
+    target_group_arn = aws_lb_target_group.csntp_target_group.arn
+  }
+}
+
+resource "aws_lb_listener" "csntp_listener_SSL" {
+  load_balancer_arn = aws_lb.csntp_elb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  certificate_arn   = var.certificate_arn
+
+  default_action {
+    type             = var.listener_forward_type
+    target_group_arn = aws_lb_target_group.csntp_target_group.arn
+  }
+}
+
+resource "aws_route53_record" "csntp_dns" {
+  zone_id = var.hosted_zone_id
+  allow_overwrite = true
+  name    = "ingkwasiattafua.com"
+  type    = "A"
+
+  alias {
+    name                   = var.alb_dns_name
+    zone_id                = var.hosted_zone_id
+    evaluate_target_health = true
+  }
+}
 
 
