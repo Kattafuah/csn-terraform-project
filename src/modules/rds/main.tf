@@ -1,12 +1,3 @@
-module "vpc" {
-  source = "./src/modules/vpc"
-}
-
-module "security" {
-  source = "./src/modules/security"
-  vpc_id = module.vpc.vpc_id
-}
-
 resource "aws_db_instance" "csntp_rds" {
   allocated_storage                   = 20
   identifier                          = var.rds_identifier
