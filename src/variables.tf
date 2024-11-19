@@ -65,5 +65,5 @@ variable "hosted_zone_id" {
 
 variable "alb_dns_name" {
   type = string
-  # default = module.vpc.alb_dns_name
+  default = module.vpc.aws_lb.csntp_elb.dns_name
 }
