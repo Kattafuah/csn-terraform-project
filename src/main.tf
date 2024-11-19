@@ -7,17 +7,17 @@ module "security" {
   vpc_id = module.vpc.vpc_id
 }
 
-# module "load-balancer" {
-#   source               = "./modules/load-balancer"
-#   # vpc_id = module.vpc.vpc_id
-#   # elb_security_group_id = module.vpc.elb_security_group_id
-#   # pub_sn1_id = module.vpc.pub_sn1_id
-#   # pub_sn2_id = module.vpc.pub_sn2_id
-#   # subnets              = module.vpc.public_subnets
-#   # lb_security_group_id = module.security.lb_security_group_id
-#   # vpc_id               = var.vpc_id
-#   # certificate_arn      = module.domain-ssl.certificate_arn
-# }
+module "load-balancer" {
+  source               = "./modules/load-balancer"
+  # vpc_id = module.vpc.vpc_id
+  # elb_security_group_id = module.vpc.elb_security_group_id
+  # pub_sn1_id = module.vpc.pub_sn1_id
+  # pub_sn2_id = module.vpc.pub_sn2_id
+  # subnets              = module.vpc.public_subnets
+  # lb_security_group_id = module.security.lb_security_group_id
+  # vpc_id               = var.vpc_id
+  # certificate_arn      = module.domain-ssl.certificate_arn
+}
 
 # module "domain-ssl" {
 #   source          = "./modules/domain-ssl"
