@@ -10,6 +10,3 @@ output "alb_dns_name" {
   value = module.vpc.aws_lb.alb.dns_name
 }
 
-locals {
-  alb_dns_name = module.vpc.alb_dns_name
-}
