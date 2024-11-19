@@ -5,9 +5,9 @@ module "vpc" {
   alb_dns_name    = var.alb_dns_name # module.var.alb_dns_name
 }
 
-locals {
-  alb_dns_name = module.vpc.alb_dns_name
-}
+# locals {
+#   alb_dns_name = module.vpc.alb_dns_name
+# }
 
 module "security" {
   source = "./modules/security"
