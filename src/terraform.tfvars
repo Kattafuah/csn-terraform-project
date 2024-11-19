@@ -4,3 +4,5 @@ domain_name = "ingkwasiattafua.com"             # Replace with your actual domai
 # vpc_id = module.vpc.vpc_id # Assuming 'vpc_id' is an output from the 'vpc' module
 # db_password = module.rds.aws_ssm_parameter.database_password # Assuming 'generated_db_password' is an output from the 'security' module
 rds_identifier = "my-custom-rds"
+instance_class                      = "db.t3.micro"  # or your desired instance class
+iam_database_authentication_enabled = false          # or true if you want it enabled
