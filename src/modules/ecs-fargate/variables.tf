@@ -53,3 +53,18 @@ variable "pub_access" {
 variable "ecs_task_execution_role" {
   default = "arn:aws:iam::431877974142:role/ecsTaskExecutionRole"
 }*/
+
+variable "rds_identifier" {
+  description = "The identifier for the RDS instance"
+  type        = string
+}
+
+variable "instance_class" {
+  description = "The instance class for the RDS instance"
+  type        = string
+}
+
+variable "iam_database_authentication_enabled" {
+  description = "Enable IAM database authentication"
+  type        = bool
+}

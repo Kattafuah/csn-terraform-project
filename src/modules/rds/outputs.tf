@@ -57,3 +57,8 @@ output "ssm_database_username" {
 # output "ssm_db_host_param" {
 #   value = aws_ssm_parameter.db_host.value  # Adjust this to your actual resource
 # }
+
+output "aws_db_instance" {
+  description = "The RDS database instance"
+  value       = aws_db_instance.csntp_rds
+}
