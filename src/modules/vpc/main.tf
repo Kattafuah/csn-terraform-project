@@ -184,7 +184,7 @@ resource "aws_route53_record" "csntp_dns" {
   type    = "A"
 
   alias {
-    name                   = var.alb_dns_name
+    name                   = aws_lb.csntp_elb.dns_name
     zone_id                = var.hosted_zone_id
     evaluate_target_health = true
   }
