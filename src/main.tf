@@ -27,15 +27,26 @@ module "domain-ssl" {
   # name     = var.domain_name
 }
 
-module "rds" {
-  source               = "./modules/rds"
-  # subnets              = module.vpc.pri_subnets
-  # rds_security_group_id = module.security.rds_security_group_id
-  # database_username          = module.rds.aws_ssm_parameter.database_username
-  # db_password          = module.rds.aws_ssm_parameter.database_password.value
-  # vpc_id               = module.vpc.vpc_id
-}
+# module "rds" {
+#   source               = "./modules/rds"
+#   # subnets              = module.vpc.pri_subnets
+#   # rds_security_group_id = module.security.rds_security_group_id
+#   # database_username          = module.rds.aws_ssm_parameter.database_username
+#   # db_password          = module.rds.aws_ssm_parameter.database_password.value
+#   # vpc_id               = module.vpc.vpc_id
+# }
 
+module "rds" {
+  source = "./modules/rds"
+  
+  # Pass the required variables to the RDS module
+  rds_identifier                      = var.rds_identifier
+  rds_db_name                         = var.rds_db_name
+  database_username                   = var.database_username
+  instance_class                      = var.instance_class
+  iam_database_authentication_enabled = var.iam_database_authentication_enabled
+  pub_access                          = var.pub_access
+}
 
 module "ecs-fargate" {
   source                      = "./modules/ecs-fargate"
@@ -52,7 +63,3 @@ module "ecs-fargate" {
 }
 
 
-# resource "aws_something_else" "example_usage" {
-#   vpc_id      = module.vpc.vpc_id  # Correct use of a module output in main.tf
-#   db_password = module.aws_ssm_parameter.database_password # Correct use of a module output in main.tf
-# }

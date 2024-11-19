@@ -43,3 +43,18 @@ variable "iam_database_authentication_enabled" {
   description = "Enable IAM database authentication."
   type        = bool
 }
+
+variable "rds_db_name" {
+  type    = string
+  default = "csntp_db"
+}
+
+variable "database_username" {
+  type    = string
+  default = "admin"
+}
+
+variable "pub_access" {
+  type    = bool
+  default = false
+}
