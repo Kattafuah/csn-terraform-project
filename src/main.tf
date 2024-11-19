@@ -36,17 +36,17 @@ module "security" {
 # #   # vpc_id               = module.vpc.vpc_id
 # # }
 
-# module "rds" {
-#   source = "./modules/rds"
+module "rds" {
+  source = "./modules/rds"
   
-#   # Pass the required variables to the RDS module
-#   rds_identifier                      = var.rds_identifier
-#   rds_db_name                         = var.rds_db_name
-#   database_username                   = var.database_username
-#   instance_class                      = var.instance_class
-#   iam_database_authentication_enabled = var.iam_database_authentication_enabled
-#   pub_access                          = var.pub_access
-# }
+  # Pass the required variables to the RDS module
+  rds_identifier                      = var.rds_identifier
+  rds_db_name                         = var.rds_db_name
+  database_username                   = var.database_username
+  instance_class                      = var.instance_class
+  iam_database_authentication_enabled = var.iam_database_authentication_enabled
+  pub_access                          = var.pub_access
+}
 
 # module "ecs-fargate" {
 #   source                      = "./modules/ecs-fargate"
