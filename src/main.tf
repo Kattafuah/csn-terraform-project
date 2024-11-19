@@ -2,7 +2,7 @@ module "vpc" {
   source = "./modules/vpc"
   route53_zone_id = var.route53_zone_id
   hosted_zone_id = var.hosted_zone_id
-  alb_dns_name    = var.alb_dns_name # module.var.alb_dns_name
+  alb_dns_name    = module.vpc.aws_lb.csntp_elb.dns_name # module.var.alb_dns_name
 }
 
 # locals {
