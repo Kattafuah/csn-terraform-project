@@ -1,9 +1,9 @@
 module "vpc" {
-  source = "./modules/vpc"
+  source = "./src/modules/vpc"
 }
 
 module "security" {
-  source = "./modules/security"
+  source = "./src/modules/security"
   vpc_id = module.vpc.vpc_id
 }
 
