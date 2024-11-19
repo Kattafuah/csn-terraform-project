@@ -1,5 +1,5 @@
 module "rds" {
-  source = "./rds"  # Adjust the path to your RDS module
+  source = "./src/modules/rds"  # Adjust the path to your RDS module
   rds_identifier = var.rds_identifier
   rds_db_name = var.rds_db_name
   instance_class = var.instance_class
