@@ -1,12 +1,12 @@
-module "rds" {
-  source = "./src/modules/rds"  # Adjust the path to your RDS module
-  rds_identifier = var.rds_identifier
-  rds_db_name = var.rds_db_name
-  instance_class = var.instance_class
-  iam_database_authentication_enabled = var.iam_database_authentication_enabled
-  pub_access = var.pub_access
-  database_username = var.database_username
-}
+# module "rds" {
+#   source = "./src/modules/rds"  # Adjust the path to your RDS module
+#   rds_identifier = var.rds_identifier
+#   rds_db_name = var.rds_db_name
+#   instance_class = var.instance_class
+#   iam_database_authentication_enabled = var.iam_database_authentication_enabled
+#   pub_access = var.pub_access
+#   database_username = var.database_username
+# }
 
 resource "aws_ecs_cluster" "csntp_cluster" {
   name = "csntp_cluster"
