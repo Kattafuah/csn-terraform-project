@@ -126,7 +126,7 @@ resource "aws_ecs_task_definition" "csntp_task_definition" {
         },
         {
           name  = "WORDPRESS_DB_NAME",
-          value = module.rds_db_name
+          value = module.rds.rds_db_name
         }
       ]
     }
@@ -136,12 +136,12 @@ resource "aws_ecs_task_definition" "csntp_task_definition" {
     name = "csntp_efs_volume"
 
     efs_volume_configuration {
-      file_system_id          = aws_efs_file_system.csntp_efs.id
+      file_system_id          = module.rds.aws_efs_file_system.csntp_efs.id
       root_directory          = "/"
       transit_encryption      = "ENABLED"
       transit_encryption_port = 2049
       authorization_config {
-        access_point_id = aws_efs_access_point.csntp_access_pt.id
+        access_point_id = module.rds.aws_efs_access_point.csntp_access_pt.id
         iam             = "ENABLED"
       }
     }
@@ -163,7 +163,7 @@ resource "aws_ecs_service" "csntp_service" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.csntp_target_group.arn
+    target_group_arn = module.load-balancer.aws_lb_target_group.csntp_target_group.arn
     container_name   = "wordpress"
     container_port   = 80
   }

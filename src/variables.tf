@@ -29,4 +29,17 @@ variable "domain_name" {
   type        = string
 }
 
+variable "rds_identifier" {
+  description = "The identifier for the RDS instance."
+  type        = string
+}
 
+variable "instance_class" {
+  description = "The instance class for the RDS instance."
+  type        = string
+}
+
+variable "iam_database_authentication_enabled" {
+  description = "Enable IAM database authentication."
+  type        = bool
+}
