@@ -94,7 +94,7 @@ resource "aws_security_group" "efs_security_group" {
 }
 
 resource "aws_security_group" "elb_security_group" {
-  name        = "elb_sg1"
+  name        = "elb_sg"
   description = "route traffic to ecs"
   vpc_id      = var.vpc_id
 
