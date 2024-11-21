@@ -60,7 +60,7 @@ variable "pub_access" {
 }
 
 variable "hosted_zone_id" {
-    type    = string
+  type = string
 }
 
 # variable "alb_dns_name" {
