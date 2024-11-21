@@ -147,8 +147,8 @@ resource "aws_ecs_service" "csntp_service" {
   health_check_grace_period_seconds = 300
 
   network_configuration {
-    subnets         = [aws_subnet.pub_sn1.id, aws_subnet.pub_sn2.id]
-    security_groups = [aws_security_group.ecs_security_group.id]
+    subnets         = [module.vpc.public_subnet1_id, module.vpc.public_subnet2_id]
+    security_groups = [module.security.ecs_security_group]
     assign_public_ip = true
   }
 
