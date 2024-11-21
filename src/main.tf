@@ -11,7 +11,7 @@ module "vpc" {
 
 module "security" {
   source = "./modules/security"
-  vpc_id = module.vpc.aws_vpc.csntp.id # module.vpc.vpc_id
+  vpc_id = module.vpc.vpc_id
 }
 
 # module "load-balancer" {
