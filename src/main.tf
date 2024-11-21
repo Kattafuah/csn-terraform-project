@@ -71,6 +71,6 @@ module "ecs-fargate" {
 #   rds_security_group_id    = module.security.rds_security_group_id
 #   elb_security_group_id    = module.security.elb_security_group_id
 #   private_subnet_ids       = module.vpc.private_subnet_ids
-# }
+}
 
 
