@@ -190,7 +190,7 @@ resource "aws_route53_record" "csntp_dns" {
   }
 }
 
-module "elb_security_group" {
+module "security" {
   source = "../security"  // Adjust the path based on your directory structure
   vpc_id = aws_vpc.csntp.id  // Ensure you have a VPC resource defined in this module
 }
