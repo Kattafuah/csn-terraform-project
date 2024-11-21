@@ -116,7 +116,7 @@ resource "aws_ecs_task_definition" "csntp_task_definition" {
         },
         {
           name  = "WORDPRESS_DB_NAME",
-          value = rds_db_name
+          value = var.rds_db_name
         }
       ]
     }
