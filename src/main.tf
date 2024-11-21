@@ -67,10 +67,10 @@ module "ecs-fargate" {
   rds_identifier              = var.rds_identifier  # Add this line
   instance_class              = var.instance_class  # Add this line
   iam_database_authentication_enabled = var.iam_database_authentication_enabled 
-  vpc_id                   = module.vpc.vpc_id
-  rds_security_group_id    = module.security.rds_security_group_id
-  elb_security_group_id    = module.security.elb_security_group_id
-  private_subnet_ids       = module.vpc.private_subnet_ids
-}
+#   vpc_id                   = module.vpc.vpc_id
+#   rds_security_group_id    = module.security.rds_security_group_id
+#   elb_security_group_id    = module.security.elb_security_group_id
+#   private_subnet_ids       = module.vpc.private_subnet_ids
+# }
 
 
