@@ -144,7 +144,7 @@ resource "aws_lb" "csntp_elb" {
   name               = var.elb_name
   internal           = false
   load_balancer_type = var.elb_type
-  security_groups    = [module.security.aws_security_group.elb_security_group.id]
+  security_groups    = [module.security.aws_security_group.elb_security_group]
   subnets            = [aws_subnet.pub_sn1.id, aws_subnet.pub_sn2.id]
 
   enable_deletion_protection = false
