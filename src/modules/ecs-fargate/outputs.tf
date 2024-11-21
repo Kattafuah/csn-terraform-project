@@ -117,3 +117,8 @@ output "aws_db_instance" {
   description = "The RDS database instance"
   value       = aws_db_instance.csntp_rds
 }
+
+
+output "csntp_rds" {
+  value = aws_db_instance.csntp_rds.id  // Ensure this matches your actual resource name
+}

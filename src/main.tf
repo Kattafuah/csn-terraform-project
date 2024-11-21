@@ -70,6 +70,7 @@ module "ecs-fargate" {
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
   route53_zone_id                     = var.route53_zone_id
   hosted_zone_id                      = var.hosted_zone_id
+  rds_db_name                         = module.ecs-fargate.rds_db_name
   alb_dns_name                        = module.vpc.alb_dns_name # module.var.alb_dns_name
 }
 

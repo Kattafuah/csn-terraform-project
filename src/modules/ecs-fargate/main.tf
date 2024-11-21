@@ -188,14 +188,14 @@ resource "aws_efs_file_system" "csntp_efs" {
 
 resource "aws_efs_mount_target" "csntp_efs_mt1" {
   file_system_id = aws_efs_file_system.csntp_efs.id
-  subnet_id      = module.vpc.aws_subnet.pri_sn1.id
-  security_groups = [ module.security.efs_security_group.id ]
+  subnet_id      = module.vpc.private_subnet1_id
+  security_groups = [ module.security.efs_security_group ]
 }
 
 resource "aws_efs_mount_target" "csntp_efs_mt2" {
   file_system_id = aws_efs_file_system.csntp_efs.id
-  subnet_id      = module.vpc.aws_subnet.pri_sn2.id
-  security_groups = [ module.security.efs_security_group.id ]
+  subnet_id      = module.vpc.private_subnet2_id
+  security_groups = [ module.security.efs_security_group ]
   }
 
 
