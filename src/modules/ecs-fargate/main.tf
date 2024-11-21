@@ -153,7 +153,7 @@ resource "aws_ecs_service" "csntp_service" {
   }
 
   load_balancer {
-    target_group_arn = module.vpc.aws_lb_target_group.csntp_target_group.arn
+    target_group_arn = module.vpc.target_group_arn
     container_name   = "wordpress"
     container_port   = 80
   }
@@ -171,7 +171,7 @@ resource "aws_db_instance" "csntp_rds" {
   port                                = "3306"
   storage_type                        = "gp3"
   db_subnet_group_name                = "csntp_subnet_group"
-  vpc_security_group_ids              = [module.security.rds_security_group.id]
+  vpc_security_group_ids              = [module.security.rds_security_group]
   skip_final_snapshot                 = true
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
   deletion_protection                 = false
