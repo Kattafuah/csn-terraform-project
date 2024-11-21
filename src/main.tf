@@ -2,7 +2,7 @@ module "vpc" {
   source = "./modules/vpc"
   route53_zone_id = var.route53_zone_id
   hosted_zone_id = var.hosted_zone_id
-  alb_dns_name    = module.vpc.aws_lb.csntp_elb.dns_name # module.var.alb_dns_name
+  alb_dns_name = module.vpc.alb_dns_name # module.var.alb_dns_name
 }
 
 # locals {
@@ -66,7 +66,11 @@ module "ecs-fargate" {
   secrets_manager_db_password = module.ecs-fargate.database_password
   rds_identifier              = var.rds_identifier  # Add this line
   instance_class              = var.instance_class  # Add this line
-  iam_database_authentication_enabled = var.iam_database_authentication_enabled  # Add this line
+  iam_database_authentication_enabled = var.iam_database_authentication_enabled 
+  vpc_id                   = module.vpc.vpc_id
+  rds_security_group_id    = module.security.rds_security_group_id
+  elb_security_group_id    = module.security.elb_security_group_id
+  private_subnet_ids       = module.vpc.private_subnet_ids
 }
 
 
