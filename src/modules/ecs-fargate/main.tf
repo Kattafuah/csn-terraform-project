@@ -171,7 +171,7 @@ resource "aws_db_instance" "csntp_rds" {
   port                                = "3306"
   storage_type                        = "gp3"
   db_subnet_group_name                = "csntp_subnet_group"
-  vpc_security_group_ids              = [aws_security_group.rds_security_group.id]
+  vpc_security_group_ids              = [module.security.aws_security_group.rds_security_group.id]
   skip_final_snapshot                 = true
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
   deletion_protection                 = false
