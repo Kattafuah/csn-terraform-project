@@ -29,6 +29,10 @@ output "public_subnet2_cidr" {
 }
 
 # Outputs for Private Subnets
+output "aws_subnet" {
+  value = aws_subnet.pri_sn1.id  // Adjust this to match your actual subnet resource
+}
+
 output "private_subnet1_id" {
   description = "The ID of the first private subnet"
   value       = aws_subnet.pri_sn1.id

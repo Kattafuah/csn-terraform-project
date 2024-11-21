@@ -226,3 +226,14 @@ resource "aws_ssm_parameter" "database_username" {
   value = var.database_username
 }
 
+module "security" {
+  source = "../security"  // Adjust the path based on your directory structure
+  vpc_id = module.vpc.vpc_id  // Ensure you have a VPC resource defined in this module
+}
+
+module "vpc" {
+    source = "../vpc"  // Adjust the path based on your directory structure
+    route53_zone_id = var.route53_zone_id
+    hosted_zone_id = var.hosted_zone_id
+    alb_dns_name = module.vpc.alb_dns_name// Add any required variables for the VPC module
+}
