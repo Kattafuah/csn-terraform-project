@@ -171,7 +171,7 @@ resource "aws_db_instance" "csntp_rds" {
   port                                = "3306"
   storage_type                        = "gp3"
   db_subnet_group_name                = "csntp_subnet_group"
-  vpc_security_group_ids              = [module.security.aws_security_group.rds_security_group.id]
+  vpc_security_group_ids              = [module.security.rds_security_group.id]
   skip_final_snapshot                 = true
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
   deletion_protection                 = false
@@ -189,13 +189,13 @@ resource "aws_efs_file_system" "csntp_efs" {
 resource "aws_efs_mount_target" "csntp_efs_mt1" {
   file_system_id = aws_efs_file_system.csntp_efs.id
   subnet_id      = module.vpc.aws_subnet.pri_sn1.id
-  security_groups = [ module.security.aws_security_group.efs_security_group.id ]
+  security_groups = [ module.security.efs_security_group.id ]
 }
 
 resource "aws_efs_mount_target" "csntp_efs_mt2" {
   file_system_id = aws_efs_file_system.csntp_efs.id
   subnet_id      = module.vpc.aws_subnet.pri_sn2.id
-  security_groups = [ module.security.aws_security_group.efs_security_group.id ]
+  security_groups = [ module.security.efs_security_group.id ]
   }
 
 
