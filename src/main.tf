@@ -3,6 +3,7 @@ module "vpc" {
   route53_zone_id = var.route53_zone_id
   hosted_zone_id = var.hosted_zone_id
   alb_dns_name = module.vpc.alb_dns_name # module.var.alb_dns_name
+  
 }
 
 # locals {
@@ -11,7 +12,7 @@ module "vpc" {
 
 module "security" {
   source = "./modules/security"
-  vpc_id = vpc.vpc_id # module.vpc.vpc_id
+  vpc_id =  module.vpc.vpc_id
 }
 
 # module "load-balancer" {

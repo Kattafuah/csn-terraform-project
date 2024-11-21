@@ -1,6 +1,6 @@
-# output "vpc_id" {
-#   value = module.vpc.aws_vpc.csntp.id
-# }
+output "vpc_id" {
+  value = module.vpc.aws_vpc.csntp.id
+}
 
 # output "rds_endpoint" {
 #   value = module.ecs-fargate.aws_db_instance.wordpress_db.endpoint
