@@ -144,7 +144,7 @@ resource "aws_lb" "csntp_elb" {
   name               = var.elb_name
   internal           = false
   load_balancer_type = var.elb_type
-  security_groups    = [module.elb_security_group]
+  security_groups    = [module.security.elb_security_group]
   subnets            = [aws_subnet.pub_sn1.id, aws_subnet.pub_sn2.id]
 
   enable_deletion_protection = false
@@ -190,4 +190,7 @@ resource "aws_route53_record" "csntp_dns" {
   }
 }
 
-
+module "elb_security_group" {
+  source = "./security"  // Adjust the path based on your directory structure
+  vpc_id = aws_vpc.csntp.id  // Ensure you have a VPC resource defined in this module
+}
