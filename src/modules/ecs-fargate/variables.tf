@@ -26,7 +26,6 @@ variable "secrets_manager_db_password" {
 
 variable "rds_db_name" {
   type    = string
-  default = "csntp_db"
 }
 
 variable "aws_efs_access_point" {

@@ -71,7 +71,7 @@ output "rds_endpoint" {
 
 output "rds_db_name" {
   description = "The database name"
-  value       = var.rds_db_name # aws_db_instance.csntp_rds.db_name
+  value       =  aws_db_instance.csntp_rds.db_name
 }
 
 # Outputs for the EFS file system

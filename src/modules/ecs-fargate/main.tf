@@ -162,7 +162,7 @@ resource "aws_ecs_service" "csntp_service" {
 resource "aws_db_instance" "csntp_rds" {
   allocated_storage                   = 20
   identifier                          = var.rds_identifier
-  db_name                             = var.rds_db_name
+  db_name                             = "csndb_name"
   engine                              = "mysql"
   engine_version                      = "8.0.35"
   instance_class                      = var.instance_class
