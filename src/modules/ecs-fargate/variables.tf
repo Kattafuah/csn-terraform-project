@@ -19,10 +19,10 @@ variable "secrets_manager_db_password" {
   type        = string
 }
 
-variable "ssm_db_host_param" {
-  description = "The SSM parameter name for the WordPress DB host."
-  type        = string
-}
+# variable "ssm_db_host_param" {
+#   description = "The SSM parameter name for the WordPress DB host."
+#   type        = string
+# }
 
 variable "rds_db_name" {
   type    = string

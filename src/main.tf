@@ -62,7 +62,7 @@ module "ecs-fargate" {
   # subnets                     = module.vpc.public_subnets
   # security_group_id           = module.security.ecs_security_group_id
   execution_role_arn                  = var.execution_role_arn
-  ssm_db_host_param                   = module.ecs-fargate.aws_db_instance.csntp_rds
+  # ssm_db_host_param                   = module.ecs-fargate.aws_db_instance.csntp_rds
   ssm_db_user_param                   = module.ecs-fargate.database_username
   secrets_manager_db_password         = module.ecs-fargate.database_password
   rds_identifier                      = var.rds_identifier # Add this line
